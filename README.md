@@ -5,8 +5,8 @@ This project utilizes Natural Language Processing (NLP) to predict patient medic
 ## Architecture
 - **Feature Engineering:** Concatenation of `drugName` and `review` text for high-confidence signaling.
 - **Preprocessing:** Custom stopword filtration preserving critical linguistic negations (e.g., "not", "no").
-- **Vectorization:** TF-IDF extraction utilizing unrestricted trigrams (1, 3) resulting in ~1.6M features[cite: 1, 2].
-- **Modeling:** Highly optimized `PassiveAggressiveClassifier` achieving >98% accuracy[cite: 1].
+- **Vectorization:** TF-IDF extraction utilizing unrestricted trigrams (1, 3) resulting in ~1.6M features.
+- **Modeling:** Highly optimized `PassiveAggressiveClassifier` achieving >98% accuracy.
 - **Web App:** Deployed as a RESTful web interface using Flask.
 
 ## Quick Start
