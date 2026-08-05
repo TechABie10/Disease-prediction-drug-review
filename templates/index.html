@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Condition Predictor</title>
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: #f8fafc; color: #0f172a; display: flex; justify-content: center; padding: 3rem 1rem; margin: 0; }
+        .container { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); width: 100%; max-width: 600px; }
+        h2 { margin-top: 0; color: #1e293b; font-size: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: #475569; }
+        input[type="text"], textarea { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-family: inherit; font-size: 1rem; }
+        textarea { height: 120px; resize: vertical; }
+        input:focus, textarea:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        button { background: #2563eb; color: white; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer; width: 100%; transition: background-color 0.2s; }
+        button:hover { background: #1d4ed8; }
+        .result { margin-top: 2rem; padding: 1.25rem; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; color: #065f46; display: flex; align-items: center; gap: 0.75rem; font-size: 1.125rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>💊 Medical Condition Predictor</h2>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="drug_name">Drug Administered</label>
+                <input type="text" id="drug_name" name="drug_name" required value="{{ drug_name if drug_name else '' }}" placeholder="e.g., Levonorgestrel">
+            </div>
+            <div class="form-group">
+                <label for="review_text">Patient Review & Symptoms</label>
+                <textarea id="review_text" name="review_text" required placeholder="Describe the patient's experience or side effects...">{{ review_text if review_text else '' }}</textarea>
+            </div>
+            <button type="submit">Analyze Text</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <strong>Prediction:</strong> {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
